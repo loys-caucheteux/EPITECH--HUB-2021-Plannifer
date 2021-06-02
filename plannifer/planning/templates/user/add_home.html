@@ -1,0 +1,19 @@
+{% block content %}
+<form class="container row" action="{% url 'planning:add_home' %}" method="post">
+  {% csrf_token %}
+  <h5>Add New Home</h5>
+  <div class="col-md-9 form-group">
+    {{ homeform.name }}
+  </div>
+  <button type="submit" class="col-md-3 btn btn-outline-success">Create</button>
+</form>
+{% if errors %}
+<div>
+  {% for key, error in errors %}
+  {% autoescape off %}
+    {{ error }}
+  {% endautoescape %}
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

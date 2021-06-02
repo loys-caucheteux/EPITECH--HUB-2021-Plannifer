@@ -1,0 +1,17 @@
+{% block content %}
+<form class="container row" action="{% url 'planning:add_user' home.id %}" method="post">{% csrf_token %}
+    <div class="form-group col-md-9">
+        {{ userform.username }}
+    </div>
+    <button type="submit" class="col-md-3 btn btn-outline-success"><span data-feather="plus"></span></button>
+</form>
+{% if errors %}
+<div>
+  {% for key, error in errors %}
+  {% autoescape off %}
+    {{ error }}
+  {% endautoescape %}
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+body {
+    margin: 0%;
+    font-family:  "Arial", "Palatino", "Bookman Old Style", sans-serif;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+div.topnav {
+    font-size: larger;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(232, 94, 94);
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+}
+div.topnav a{
+    margin: 0px;
+    padding: 10px;
+    background-color: rgb(241, 241, 241);
+}
+div.topnav a:hover{
+    background-color: rgb(232, 94, 94);
+}
+h1 {
+    color: blue;
+}

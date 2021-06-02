@@ -1,0 +1,38 @@
+{% include 'planning/header.html' %}
+{% load static %}
+{% load planning_extras %}
+{% block content %}
+<div class="container">
+  <h2>Calendar : {{ home.name }}</h2>
+  <div class="d-flex flex-wrap align-items-end justify-content-end">
+    <div>
+      <div class="btn-group">
+        <a href="{{ home.pk|addstr:'?'|addstr:prev_month }}" class="btn btn-primary"><span data-feather="arrow-left"></span>Previous Month</a>
+      </div>
+      <div class="btn-group">
+        <a href="{{ home.pk|addstr:'?'|addstr:next_month }}" class="btn btn-primary">Next Month<span data-feather="arrow-right"></span></a>
+      </div>
+    </div>
+  </div>
+</div>
+{{ calendar }}
+{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://pagecdn.io/lib/feather-icons/4.28.0/feather.min.js"></script>
+  <script>
+    feather.replace()
+  </script>
+<script>
+    $(function () {
+      $("#id_date").datetimepicker({
+        format: 'm/Y',
+      });
+    });
+</script>
+<script>
+    function write_date() {
+      var x = document.getElementsByClassName("date_x").value;
+      document.getElementById("date_x").innerHTML = "" + x;
+      console.log("update date", x);
+    }
+</script>

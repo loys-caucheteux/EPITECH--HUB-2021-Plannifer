@@ -1,0 +1,66 @@
+{% include "planning/header.html" %}
+{% load static %}
+{% block content %}
+  <main class="container">
+      <div class="align-items-center">
+        <div class="col-md-10 mt-5 bg-light border rounded-3">
+          <h3>Edit Task {{ task.title }}</h3>
+          <form action="{% url 'planning:edit_task' task.pk %}" method="post">{% csrf_token %}
+            <div class="form-floating">
+              <div class="form-group {% if taskform.title.errors %}has-warning{% endif %}"></div>
+              {{ taskform.title }}
+              <label for="{{ taskform.title.id_for_label }}">Title</label>
+            </div>
+            <div class="form-floating">
+              <div class="form-group {% if taskform.description.errors %}has-warning{% endif %}"></div>
+              {{ taskform.description }}
+              <label for="{{ taskform.description.id_for_label }}">Description</label>
+            </div>
+            <div class="form-floating">
+              <div class="form-group {% if taskform.start_time.errors %}has-warning{% endif %}"></div>
+              {{ taskform.start_time }}
+              <label for="{{ taskform.start_time.id_for_label }}">Start Time</label>
+            </div>
+            <div class="form-floating">
+              <div class="form-group {% if taskform.end_time.errors %}has-warning{% endif %}"></div>
+              {{ taskform.end_time }}
+              <label for="{{ taskform.end_time.id_for_label }}">End Time</label>
+            </div>
+            {% if task.spent != None %}
+            <div class="form-floating">
+              <div class="form-group {% if taskform.spent.errors %}has-warning{% endif %}"></div>
+              {{ taskform.spent }}
+              <label for="{{ taskform.spent.id_for_label }}">(facultative) Cost</label>
+            </div>
+            {% endif %}
+            <button type="submit" class="btn btn-primary">Edit Task</button>
+            </form>
+            <a href="{% url 'planning:edit_task' task.pk %}?d=y" class="btn btn-outline-danger">Delete Task</a>
+        </div>
+      </div>
+  {% if errors %}
+  <div>
+    {% for key, error in errors %}
+    {% autoescape off %}
+      {{ error }}
+    {% endautoescape %}
+    {% endfor %}
+  </div>
+  {% endif %}
+  </main>
+{% endblock %}
+<script type="text/javascript" src="https://pagecdn.io/lib/feather-icons/4.28.0/feather.min.js"></script>
+  <script>
+    feather.replace()
+  </script>
+  <script>
+    $(function () {
+      $("#id_start_time").datetimepicker({
+        format: 'd/m/Y H:i',
+      });
+      $("#id_end_time").datetimepicker({
+        format: 'd/m/Y H:i',
+      });
+    });
+  </script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>

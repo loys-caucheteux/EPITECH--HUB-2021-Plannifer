@@ -1,0 +1,48 @@
+{% include "planning/header.html" %}
+{% load static %}
+    <main class="text-center col-md-8 position-absolute top-50 start-50 translate-middle">
+      <h1 class="h3 mb-3 fw-normal">Thanks for signing up !</h1>
+      <form action="{% url 'planning:register' %}" method="post">{% csrf_token %}
+        <div class="form-floating">
+          <div class="form-group {% if form.mail.errors %}has-warning{% endif %}"></div>
+          <div class="form-floating">
+            {{ form.mail }}
+            <label for="{{ form.email.id_for_label }}">Email</label>
+          </div>
+          <div class="form-group {% if form.name.errors %}has-warning{% endif %}"></div>
+          <div class="form-floating">
+            {{ form.name }}
+            <label for="{{ form.name.id_for_label }}">First Name</label>
+          </div>
+          <div class="form-group {% if form.surname.errors %}has-warning{% endif %}"></div>
+          <div class="form-floating">
+            {{ form.surname }}
+            <label for="{{ form.surname.id_for_label }}">Last Name</label>
+          </div>
+          <div class="form-group {% if form.name.errors %}has-warning{% endif %}"></div>
+          <div class="form-floating">
+            {{ form.pseudo }}
+            <label for="{{ form.pseudo.id_for_label }}">Username</label>
+          </div>
+          <div class="form-floating">
+            {{ form.pwd }}
+            <label for="{{ form.pwd.id_for_label }}">Password</label>
+          </div>
+          {% if used == 'email' %}
+            <div class="used">This e-mail address is already used.</div>
+          {% elif used == 'pseudo' %}
+            <div class="used">This username is already used.</div>
+          {% endif %}
+          <button type="submit" class="btn btn-lg btn-outline-success col-md-3 mt-5">Register</button>
+      </form>
+    </div>
+    {% if errors %}
+    <div>
+      {% for key, error in errors %}
+      {% autoescape off %}
+      {{ error }}
+      {% endautoescape %}
+      {% endfor %}
+    </div>
+    {% endif %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
