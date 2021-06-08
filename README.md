@@ -12,3 +12,7 @@ I implemented a rating system that compare the number of tasks of a member and t
 You can also buy a premium version of the app, I handled the payments with the Stripe API.
 
 I deployed the app on Heroku : [link](https://www.plannifer.herokuapp.com)
+
+I also deployed it with Docker [here](http://51.77.137.170:8000/)
+
+Unfortunately, the repo for this docker version has to remain private because it contains secrets.
